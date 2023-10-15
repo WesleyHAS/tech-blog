@@ -1,0 +1,120 @@
+:root {
+  --main-color: #0c0032;
+  --secondary-color: #190061;
+  --darker-purple: #240090;
+  --lighter-purple: #3500d3;
+  --blackish: #282828;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--blackish);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 20px; /* Increase the header padding */
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px; /* Increase the font size for the header text */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px; /* Increase the font size for the navigation links */
+}
+
+.add-blog-button {
+  background-color: var(--secondary-color); /* Use the same color pattern */
+  color: #fff;
+  padding: 10px 20px; /* Adjust padding for the button */
+  font-size: 18px; /* Increase the font size */
+  border: none;
+  cursor: pointer;
+  margin: 20px auto; /* Center the button horizontally within the container */
+  display: block;
+}
+
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  width: 800px;
+  /* padding: 20px; */
+}
+
+.post {
+  margin-bottom: 20px;
+  border: 1px solid #ddd; /* Add a border to the post */
+  padding: 10px; /* Add padding to the post */
+}
+
+.post-header {
+  background-color: var(--secondary-color); /* Match the header color */
+  color: #fff;
+  padding: 10px;
+}
+
+.post h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.post-content {
+  padding: 10px; /* Add padding to the content section */
+}
+
+.post .author,
+.post .date {
+  color: #888;
+}
+
+.post p { 
+  line-height: 1.5;
+}
+
+.post a {
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: #007bff;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  margin-top: auto;
+}
