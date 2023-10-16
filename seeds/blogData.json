@@ -1,11 +1,11 @@
 [
   {
-    "tittle": "Sample Blog Post",
+    "title": "Sample Blog Post",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     "user_id": "2"
   },
   {
-    "tittle": "Another Blog Post",
+    "title": "Another Blog Post",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     "user_id": "1"
   }
