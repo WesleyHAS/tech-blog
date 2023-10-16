@@ -19,21 +19,8 @@ BlogPost.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    // Add fields for the featured image of the blog post
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Link each blog post to a category
-    category_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "category",
-        key: "id",
-      },
-    },
     // Include an author_id to associate the blog post with its author
-    author_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
