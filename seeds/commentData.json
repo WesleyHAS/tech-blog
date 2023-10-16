@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Interesting article!",
+    "user_id": "2",
+    "post_id": "1"
+  },
+  {
+    "content": "I learned a lot from this.",
+    "user_id": "3",
+    "post_id": "2"
+  },
+  {
+    "content": "This topic is fascinating!",
+    "user_id": "2",
+    "post_id": "1"
+  }
+]
