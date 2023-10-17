@@ -55,13 +55,6 @@ nav a {
   display: block;
 }
 
-/* .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-} */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -100,7 +93,7 @@ main {
   color: #888;
 }
 
-.post p { 
+.post p {
   line-height: 1.5;
 }
 
@@ -117,4 +110,52 @@ footer {
   background-color: var(--secondary-color);
   color: #fff;
   margin-top: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-md-6 {
+  width: 50%;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--main-color);
+  margin-bottom: 20px;
+}
+
+.form {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+button.btn {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button.btn-primary {
+  background-color: var(--lighter-purple);
 }

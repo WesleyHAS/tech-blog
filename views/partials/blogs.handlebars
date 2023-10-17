@@ -1,15 +1,18 @@
-<section class="post">
-  <header class="post-header">
-    <h2>{{blogData.title}}</h2>
-  </header>
-  <div class="post-content">
-    <p class="author">{{blog_post.user_id}}</p>
-    <p class="date">Published: October 15, 2023</p>
-    <p>{{blog_post.content}}</p>
-    <a href="/blog/post1">Read more</a>
-  </div>
-</section>
-
+{{#each post as |post|}}
+  <section class="post">
+    <header class="post-header">
+      <h2>{{post.title}}</h2>
+    </header>
+    <div class="post-content">
+      <p class="author">{{post.user_id}}</p>
+      <p class="date">Published: October 15, 2023</p>
+      <p>{{post.content}}</p>
+      <a
+        href="/module-14-challenge/tech-blog/controllers/api/post-routes.js"
+      >Read more</a>
+    </div>
+  </section>
+{{/each}}
 <!--
   {{#each blog_post as |blog_post|}}
   {{/each}}
