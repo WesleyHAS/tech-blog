@@ -37,6 +37,16 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  "/public",
+  express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith(".js")) {
+        res.set("Content-Type", "application/javascript");
+      }
+    },
+  })
+);
 
 app.use(routes);
 
