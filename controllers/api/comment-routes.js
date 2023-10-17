@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
       include: [User, Blogpost],
     });
     res.status(200).json(commentData);
+    // console.log("hello");
   } catch (err) {
     res.status(500).json(err);
   }

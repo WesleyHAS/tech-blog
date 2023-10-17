@@ -30,10 +30,26 @@ const sess = {
 
 app.use(session(sess));
 
+// Inform Express.js on which template engine to use
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(routes);
+
 // Other middleware and route setup
 
-app.listen(PORT, () => {
+/* app.listen(PORT, () => {
   console.log(`Now listening on http://localhost:${PORT}`);
+}); */
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () =>
+    console.log(`Now listening on http://localhost:${PORT}`)
+  );
 });
 
 /*const path = require("path");
