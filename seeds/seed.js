@@ -1,5 +1,6 @@
-const sequelize = require("../config/connection");
+//const sequelize = require("../config/connection");
 const { User, Blogpost, Comment } = require("../models");
+const { sequelize } = require("../config/connection");
 
 // Update imports to use .js files
 const userData = require("./userData.json");

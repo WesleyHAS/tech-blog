@@ -1,6 +1,7 @@
 // Setup connection with the database
 const Sequelize = require("sequelize");
 require("dotenv").config();
+const secretKey = process.env.SESSION_SECRET;
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -15,4 +16,6 @@ const sequelize = new Sequelize(
   console.log(`Connected to the blog_db database.`)
 );
 
-module.exports = sequelize;
+module.exports = { sequelize, secretKey };
+
+// module.exports = sequelize;
