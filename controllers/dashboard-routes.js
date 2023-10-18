@@ -7,7 +7,14 @@ router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
-      include: [{ model: Blogpost }],
+    });
+    const postData = await Blogpost.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [User],
+      raw: true,
+      nest: true,
     });
 
     const user = userData.get({ plain: true });
@@ -15,7 +22,9 @@ router.get("/", withAuth, async (req, res) => {
     res.render("dashboard", {
       ...user,
       logged_in: true,
+      posts: postData,
     });
+    console.log(postData);
   } catch (err) {
     res.status(500).json(err);
   }
