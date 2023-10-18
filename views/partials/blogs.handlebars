@@ -1,6 +1,20 @@
 {{#each posts as |post|}}
   <section class="post">
     <header class="post-header">
+      <h2>{{post.title}}</h2>
+    </header>
+    <div class="post-content">
+      <p class="author">{{post.user.username}}</p>
+      <p class="date">Published: {{post.createdAt}}</p>
+      <p>{{post.content}}</p>
+      <a href="/api/posts/{{post.id}}">Read more</a>
+    </div>
+  </section>
+{{/each}}
+
+{{!-- {{#each posts as |post|}}
+  <section class="post">
+    <header class="post-header">
       <h2>{{title}}</h2>
     </header>
     <div class="post-content">
@@ -10,7 +24,7 @@
       <a href="/posts/{{id}}">Read more</a>
     </div>
   </section>
-{{/each}}
+{{/each}} --}}
 
 {{!-- {{#each post as |post|}}
   <section class="post">

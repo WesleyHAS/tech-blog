@@ -14,41 +14,31 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* router.get("/", withAuth, async (req, res) => {
-  try {
-    const blogPosts = await Blogpost.findAll({
-      include: [User],
-    });
-
-    // Render the "dashboard" template and pass the blog post data as a variable
-    res.render("dashboard", {
-      logged_in: true,
-      blogPosts, // Pass the retrieved blog posts to the template
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-}); */
-
-// Get a single post by ID
 router.get("/:id", async (req, res) => {
   try {
-    const postData = await Blogpost.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.params.id, {
+      attributes: { exclude: ["password"] },
+    });
+
+    const postWithComments = await Blogpost.findByPk(req.params.id, {
       include: [
         User,
         {
           model: Comment,
-          include: [User],
+          include: User,
         },
       ],
     });
 
-    if (!postData) {
-      res.status(404).json({ message: "No post found with this id!" });
-      return;
-    }
+    const post = postWithComments.toJSON(); // Convert to plain JSON object
 
-    res.status(200).json(postData);
+    res.render("single-post", {
+      ...userData.toJSON(), // Convert user data to plain JSON object
+      logged_in: true,
+      post: post, // Return single post object
+    });
+
+    console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -109,80 +99,3 @@ router.delete("/:id", withAuth, async (req, res) => {
 });
 
 module.exports = router;
-
-/*const router = require("express").Router();
-const { Blogpost } = require("../../models");
-const withAuth = require("../../utils/auth");
-
-// Route to create a new blog post
-router.post("/", withAuth, async (req, res) => {
-  try {
-    const newBlogpost = await Blogpost.create({
-      title: req.body.title,
-      content: req.body.content,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newBlogpost);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// Route to update an existing blog post
-router.put("/:id", withAuth, async (req, res) => {
-  try {
-    const updatedBlogpost = await Blogpost.update(
-      {
-        title: req.body.title,
-        content: req.body.content,
-      },
-      {
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      }
-    );
-
-    if (!updatedBlogpost[0]) {
-      res.status(404).json({
-        message: "No blog post found with this id or you are not the owner.",
-      });
-      return;
-    }
-
-    res.status(200).json({ message: "Blog post updated successfully." });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// Route to delete a blog post
-router.delete("/:id", withAuth, async (req, res) => {
-  try {
-    const deletedBlogpost = await Blogpost.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!deletedBlogpost) {
-      res.status(404).json({
-        message: "No blog post found with this id or you are not the owner.",
-      });
-      return;
-    }
-
-    res.status(200).json({ message: "Blog post deleted successfully." });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-module.exports = router;
-*/

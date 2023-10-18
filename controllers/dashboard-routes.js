@@ -24,7 +24,6 @@ router.get("/", withAuth, async (req, res) => {
       logged_in: true,
       posts: postData,
     });
-    console.log(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -59,58 +58,3 @@ router.get("/edit/:id", withAuth, async (req, res) => {
 });
 
 module.exports = router;
-
-/*const router = require("express").Router();
-const { User, Blogpost, Comment } = require("../models");
-const withAuth = require("../utils/auth");
-
-// Home route
-router.get("/", async (req, res) => {
-  try {
-    // Fetch blog posts from the database
-    const blogposts = await Blogpost.findAll({
-      include: [{ model: User, attributes: ["username"] }],
-      order: [["created_at", "DESC"]],
-    });
-
-    // Render the homepage with blog posts
-    res.render("homepage", {
-      blogposts,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// Display a single blog post
-router.get("/blogpost/:id", async (req, res) => {
-  try {
-    const blogpostData = await Blogpost.findByPk(req.params.id, {
-      include: [
-        { model: User, attributes: ["username"] },
-        { model: Comment, include: { model: User, attributes: ["username"] } },
-      ],
-    });
-
-    if (!blogpostData) {
-      res.status(404).json({ message: "No blog post found with this id" });
-      return;
-    }
-
-    const blogpost = blogpostData.get();
-
-    // Render the single blog post page
-    res.render("single-blogpost", {
-      blogpost,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-module.exports = router;
-*/
