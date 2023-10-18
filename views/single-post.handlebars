@@ -26,6 +26,7 @@
       <h2>{{post.title}}</h2>
       {{#if (and logged_in (eq post.user.id loggedInUser))}}
         <button id="edit-post-button">Edit</button>
+        <button id="delete-post-button">Delete</button>
       {{/if}}
     </header>
     <div class="post-content">
