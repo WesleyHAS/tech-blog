@@ -1,4 +1,3 @@
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,22 +12,18 @@
         <ul>
           <li><a href="/">Home</a></li>
           {{#if logged_in}}
-          <li><a href="/dashboard">Dashboard</a></li>
-          <button class="no-button" id="logout">logout</button>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <button class="no-button" id="logout">logout</button>
           {{else}}
-           <li><a href="/login">Login</a></li>
+            <li><a href="/login">Login</a></li>
           {{/if}}
         </ul>
       </nav>
     </header>
     <div class="container">
       <main>
-        {{{ body }}}
-        {{#if logged_in}}
-        <button class="add-blog-button">+ Add Blog</button>
-        {{> blogs}}
-        {{else}}
-        {{/if}}
+        {{{body}}}
+
       </main>
     </div>
     <footer>
@@ -36,7 +31,7 @@
     </footer>
 
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+      <script src="/js/logout.js"></script>
     {{/if}}
   </body>
 </html>

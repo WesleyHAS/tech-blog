@@ -14,6 +14,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+/* router.get("/", withAuth, async (req, res) => {
+  try {
+    const blogPosts = await Blogpost.findAll({
+      include: [User],
+    });
+
+    // Render the "dashboard" template and pass the blog post data as a variable
+    res.render("dashboard", {
+      logged_in: true,
+      blogPosts, // Pass the retrieved blog posts to the template
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); */
+
 // Get a single post by ID
 router.get("/:id", async (req, res) => {
   try {

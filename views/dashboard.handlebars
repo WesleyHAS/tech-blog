@@ -9,12 +9,17 @@
     </header>
     <main>
       <section>
-        <h2>Your Dashboard Content</h2>
         <!-- You can add content specific to the user's dashboard here -->
+
+        {{#if logged_in}}
+        {{> personal-blogs}}
+          <button class="add-blog-button">+ Add Blog</button>
+        {{else}}
+        {{/if}}
       </section>
     </main>
-    <footer>
-      <p>&copy; 2023 Your Company</p>
-    </footer>
   </body>
 </html>
+
+{{!--  {{#each blogPost}}
+                {{/each}} --}}

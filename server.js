@@ -6,12 +6,18 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 
+const handlebarsHelpers = require("handlebars-helpers")();
+const hbs = exphbs.create({
+  defaultLayout: "main",
+  helpers: handlebarsHelpers, // Include handlebarsHelpers when initializing Handlebars
+});
+
 const routes = require("./controllers");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: secretKey,
