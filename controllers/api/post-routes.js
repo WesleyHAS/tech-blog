@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get single post with comments
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: { exclude: ["password"] },
@@ -37,10 +37,11 @@ router.get("/:id", async (req, res) => {
     res.render("single-post", {
       ...userData.toJSON(), // Convert user data to plain JSON object
       logged_in: true,
+      loggedInUser: req.session.user_id,
       post: post, // Return single post object
     });
 
-    console.log(post);
+    // console.log(req.session.user_id);
   } catch (err) {
     res.status(500).json(err);
   }
