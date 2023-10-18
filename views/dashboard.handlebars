@@ -12,14 +12,23 @@
         <!-- You can add content specific to the user's dashboard here -->
 
         {{#if logged_in}}
-        {{> personal-blogs}}
-          <button class="add-blog-button">+ Add Blog</button>
-        {{else}}
+        <div id="blogs-container">
+          {{> personal-blogs}}
+        </div>
+        <div class="new-post-form-container" style="display: none;">
+          {{> new-post}}
+        </div>
+        <button class="add-blog-button" id="show-new-post">+ Add Blog</button>
         {{/if}}
+
+
       </section>
     </main>
   </body>
 </html>
+
+
+      <script src="/js/dashboard.js"></script>
 
 {{!--  {{#each blogPost}}
                 {{/each}} --}}
