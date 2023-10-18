@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get single post with comments
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -31,6 +32,7 @@ router.get("/:id", async (req, res) => {
     });
 
     const post = postWithComments.toJSON(); // Convert to plain JSON object
+    // const user = userData.get({ plain: true });
 
     res.render("single-post", {
       ...userData.toJSON(), // Convert user data to plain JSON object
