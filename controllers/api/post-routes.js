@@ -14,8 +14,36 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get single post with comments
 router.get("/:id", withAuth, async (req, res) => {
+  try {
+    const postWithComments = await Blogpost.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Comment,
+          include: User,
+        },
+      ],
+    });
+
+    if (!postWithComments) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    const post = postWithComments.toJSON();
+
+    res.render("single-post", {
+      logged_in: true,
+      loggedInUser: req.session.user_id,
+      post: post,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get single post with comments
+/* router.get("/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: { exclude: ["password"] },
@@ -41,11 +69,11 @@ router.get("/:id", withAuth, async (req, res) => {
       post: post, // Return single post object
     });
 
-    // console.log(req.session.user_id);
+    // console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); */
 
 // Create a new post
 router.post("/create-newpost", withAuth, async (req, res) => {
@@ -55,6 +83,7 @@ router.post("/create-newpost", withAuth, async (req, res) => {
       content: req.body.content,
       user_id: req.session.user_id,
     });
+    // console.log(newPost);
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
@@ -108,7 +137,7 @@ router.put("/edit/:id", withAuth, async (req, res) => {
 });
 
 // Delete a post
-router.delete("/:id", withAuth, async (req, res) => {
+/* router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Blogpost.destroy({
       where: {
@@ -122,6 +151,26 @@ router.delete("/:id", withAuth, async (req, res) => {
     }
 
     res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); */
+
+router.delete("/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Blogpost.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!postData) {
+      res.status(404).json({ message: "No post with this id!" });
+      return;
+    }
+
+    // Respond with a success message or status
+    res.status(204).end(); // 204 No Content for successful deletion
   } catch (err) {
     res.status(500).json(err);
   }
