@@ -8,9 +8,8 @@
       {{/if}}
     </header>
     <div class="post-content">
-
       <p class="author">{{post.user.username}}</p>
-      <p class="date">Published: {{post.createdAt}}</p>
+      <p class="date"><p class="published"> Published:</p> {{post.createdAt}}</p>
       <p class="content">{{post.content}}</p>
       {{#if post.comments}}
         <h3>Comments:</h3>
@@ -26,7 +25,6 @@
           {{/each}}
         </ul>
       {{/if}}
-
       {{#if logged_in}}
         <button id="add-comment-button">Add Comment</button>
         <div class="add-comment-form-container" style="display: none;">
@@ -49,7 +47,5 @@
     </div>
   </section>
 {{/if}}
-
-
 <script src="/js/add-comments.js"></script>
 <script src="/js/delete-post.js"></script>

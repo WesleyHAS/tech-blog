@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-//const sequelize = require("../config/connection");
 const { sequelize } = require("../config/connection"); // Access sequelize from the imported object
 
 class Blogpost extends Model {}
@@ -20,7 +19,6 @@ Blogpost.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    // Include an author_id to associate the blog post with its author
     user_id: {
       type: DataTypes.INTEGER,
       references: {

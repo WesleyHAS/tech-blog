@@ -16,7 +16,9 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      // Display the error message from the response
+      const errorData = await response.json();
+      alert(errorData.message);
     }
   }
 };

@@ -4,13 +4,9 @@
     <title>Dashboard</title>
   </head>
   <body>
-    {{!-- <header> --}}
       <h2>Welcome to Your Dashboard</h2>
-    {{!-- </header> --}}
     <main>
       <section>
-        <!-- You can add content specific to the user's dashboard here -->
-
         {{#if logged_in}}
         <div id="blogs-container">
           {{> personal-blogs}}
@@ -20,12 +16,8 @@
         </div>
         <button class="add-blog-button" id="show-new-post">+ Add Blog</button>
         {{/if}}
-
-
       </section>
     </main>
   </body>
 </html>
-
-
-      <script src="/js/dashboard.js"></script>
+<script src="/js/dashboard.js"></script>

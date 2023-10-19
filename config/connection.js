@@ -17,5 +17,3 @@ const sequelize = new Sequelize(
 );
 
 module.exports = { sequelize, secretKey };
-
-// module.exports = sequelize;

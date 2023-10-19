@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
-//const sequelize = require("../config/connection");
 const { sequelize } = require("../config/connection"); // Access sequelize from the imported object
 
 class User extends Model {

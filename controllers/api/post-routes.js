@@ -46,44 +46,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-/* router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const postWithComments = await Blogpost.findByPk(req.params.id, {
-      include: [
-        {
-          model: User, // Include the user for the main post
-        },
-        {
-          model: Comment,
-          include: User,
-        },
-      ],
-    });
-
-    if (!postWithComments) {
-      return res.status(404).json({ error: "Post not found" });
-    }
-
-    const post = postWithComments.toJSON();
-
-    // Extract the user information from the post object
-    const postUser = post.User;
-    delete post.User; // Remove the user from the main post object
-
-    res.render("single-post", {
-      logged_in: true,
-      loggedInUser: req.session.user_id,
-      post: {
-        ...post,
-        user: postUser, // Add the user information back to the post object
-      },
-    });
-    console.log(post);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-}); */
-
 // Create a new post
 router.post("/create-newpost", withAuth, async (req, res) => {
   try {
@@ -138,33 +100,12 @@ router.put("/edit/:id", withAuth, async (req, res) => {
     await postData.save(); // Save the changes
 
     res.redirect(`/${postData.id}`);
-    // console.log(postData.id);
-    // res.status(200).json({ message: "Post updated successfully" });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // Delete a post
-/* router.delete("/:id", withAuth, async (req, res) => {
-  try {
-    const postData = await Blogpost.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!postData) {
-      res.status(404).json({ message: "No post with this id!" });
-      return;
-    }
-
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-}); */
-
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Blogpost.destroy({
