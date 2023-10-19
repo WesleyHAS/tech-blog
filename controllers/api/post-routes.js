@@ -37,6 +37,7 @@ router.get("/:id", withAuth, async (req, res) => {
       loggedInUser: req.session.user_id,
       post: post,
     });
+    console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -45,13 +46,11 @@ router.get("/:id", withAuth, async (req, res) => {
 // Get single post with comments
 /* router.get("/:id", withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
-      attributes: { exclude: ["password"] },
-    });
-
     const postWithComments = await Blogpost.findByPk(req.params.id, {
       include: [
-        User,
+        {
+          model: User, // Include the user for the main post
+        },
         {
           model: Comment,
           include: User,
@@ -59,17 +58,25 @@ router.get("/:id", withAuth, async (req, res) => {
       ],
     });
 
-    const post = postWithComments.toJSON(); // Convert to plain JSON object
-    // const user = userData.get({ plain: true });
+    if (!postWithComments) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    const post = postWithComments.toJSON();
+
+    // Extract the user information from the post object
+    const postUser = post.User;
+    delete post.User; // Remove the user from the main post object
 
     res.render("single-post", {
-      ...userData.toJSON(), // Convert user data to plain JSON object
       logged_in: true,
       loggedInUser: req.session.user_id,
-      post: post, // Return single post object
+      post: {
+        ...post,
+        user: postUser, // Add the user information back to the post object
+      },
     });
-
-    // console.log(post);
+    console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
