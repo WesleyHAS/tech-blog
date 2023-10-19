@@ -165,6 +165,25 @@ label {
   border: 1px solid #ddd;
 }
 
+.comment-box {
+  border: 10px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.comment-username {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.comment-date {
+  font-size: 15px;
+}
+
+.posted-when {
+  font-weight: bold;
+}
 /* Styling for common buttons */
 button.btn {
   background-color: var(--secondary-color);

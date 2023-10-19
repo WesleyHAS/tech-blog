@@ -17,20 +17,29 @@ const seedDatabase = async () => {
     });
 
     for (const post of blogData) {
-      await Blogpost.create({
-        ...post,
-        user_id: users.find(
-          (user) => user.dataValues.username === post.user_id
-        ),
-      });
+      const user = users.find((user) => user.dataValues.id === post.user_id);
+      if (user) {
+        await Blogpost.create({
+          ...post,
+          user_id: user.id,
+        });
+      } else {
+        console.error(`User not found for post with user_id: ${post.user_id}`);
+      }
     }
 
     for (const comment of commentData) {
-      await Comment.create({
-        ...comment,
-        user_id: users.find((user) => user.dataValues.id === comment.user_id),
-        post_id: comment.post_id,
-      });
+      const user = users.find((user) => user.dataValues.id === comment.user_id);
+      if (user) {
+        await Comment.create({
+          ...comment,
+          user_id: user.id,
+        });
+      } else {
+        console.error(
+          `User not found for comment with user_id: ${comment.user_id}`
+        );
+      }
     }
     console.log("Database seeded successfully.");
   } catch (error) {

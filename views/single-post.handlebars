@@ -16,9 +16,13 @@
         <h3>Comments:</h3>
         <ul class="comments-list">
           {{#each post.comments as |comment|}}
-            <li>{{comment.content}}</li>
-            <li>{{user.username}}</li>
-            <li>{{comment.createdAt}}</li>
+            <li>
+              <div class="comment-box">
+              <p class="comment-content">{{comment.content}}</p>
+              <p class="comment-username">{{user.username}}</p>
+              <p class="comment-date"><p class="posted-when">Posted:</p> {{comment.createdAt}}</p>
+              </div>
+            </li>
           {{/each}}
         </ul>
       {{/if}}
