@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get single post with comments
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const postWithComments = await Blogpost.findByPk(req.params.id, {
@@ -37,13 +38,12 @@ router.get("/:id", withAuth, async (req, res) => {
       loggedInUser: req.session.user_id,
       post: post,
     });
-    console.log(post);
+    // console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Get single post with comments
 /* router.get("/:id", withAuth, async (req, res) => {
   try {
     const postWithComments = await Blogpost.findByPk(req.params.id, {
