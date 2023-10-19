@@ -18,6 +18,7 @@
           {{#each post.comments as |comment|}}
             <li>{{comment.content}}</li>
             <li>{{user.username}}</li>
+            <li>{{comment.createdAt}}</li>
           {{/each}}
         </ul>
       {{/if}}

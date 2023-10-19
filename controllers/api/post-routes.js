@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get single post with comments
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const postWithComments = await Blogpost.findByPk(req.params.id, {
       include: [
@@ -33,12 +33,14 @@ router.get("/:id", withAuth, async (req, res) => {
 
     const post = postWithComments.toJSON();
 
+    const logged_in = req.session.user_id ? true : false;
+
     res.render("single-post", {
-      logged_in: true,
+      logged_in: logged_in,
       loggedInUser: req.session.user_id,
       post: post,
     });
-    console.log(post);
+    // console.log(post);
   } catch (err) {
     res.status(500).json(err);
   }
