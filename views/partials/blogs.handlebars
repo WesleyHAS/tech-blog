@@ -6,62 +6,7 @@
     <div class="post-content">
       <p class="author">{{post.user.username}}</p>
       <p class="date">Published: {{post.createdAt}}</p>
-      {{!-- <p>{{post.content}}</p> --}}
       <a href="/api/posts/{{post.id}}">Read more</a>
     </div>
   </section>
 {{/each}}
-
-{{!-- {{#each posts as |post|}}
-  <section class="post">
-    <header class="post-header">
-      <h2>{{title}}</h2>
-    </header>
-    <div class="post-content">
-      <p class="author">{{username}}</p>
-      <p class="date">Published: {{createdAt}}</p>
-      <p>{{content}}</p>
-      <a href="/posts/{{id}}">Read more</a>
-    </div>
-  </section>
-{{/each}} --}}
-
-{{!-- {{#each post as |post|}}
-  <section class="post">
-    <header class="post-header">
-      <h2>{{post.title}}</h2>
-    </header>
-    <div class="post-content">
-      <p class="author">{{post.user_id}}</p>
-      <p class="date">Published: October 15, 2023</p>
-      <p>{{post.content}}</p>
-      <a href="/posts/{{id}}">Read more</a>
-    </div>
-  </section>
-{{/each}} --}}
-
-{{!--   {{#each blog_post as |blog_post|}}
-  {{/each}} --}}
-{{! <section class="post">
-  <header class="post-header">
-    <h2>Sample Blog Post</h2>
-  </header>
-  <div class="post-content">
-    <p class="author">Author: John Doe</p>
-    <p class="date">Published: October 15, 2023</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <a href="/post/1">Read more</a>
-  </div>
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <h2>Another Blog Post</h2>
-  </header>
-  <div class="post-content">
-    <p class="author">Author: Jane Smith</p>
-    <p class="date">Published: October 16, 2023</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <a href="/post/2">Read more</a>
-  </div>
-</section> }}

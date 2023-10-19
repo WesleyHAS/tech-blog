@@ -1,31 +1,40 @@
 :root {
-  --main-color: #0c0032;
-  --secondary-color: #190061;
-  --darker-purple: #240090;
-  --lighter-purple: #3500d3;
-  --blackish: #282828;
+  --main-color: #333; /* Dark gray */
+  --secondary-color: #4caf50; /* Green */
+  --background-color: #f5f5f5; /* Light gray background */
+  --text-color: #333; /* Dark gray text */
+  --link-color: #007bff; /* Blue links */
 }
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--blackish);
+  background-color: var(--background-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 header {
-  background-color: var(--secondary-color);
+  background-color: var(--main-color);
   color: #fff;
-  padding: 20px; /* Increase the header padding */
+  padding: 20px;
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 36px; /* Increase the font size for the header text */
+  font-size: 36px;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: var(--main-color);
+  margin: 20px;
 }
 
 nav ul {
@@ -41,18 +50,20 @@ nav li {
 nav a {
   text-decoration: none;
   color: #fff;
-  font-size: 18px; /* Increase the font size for the navigation links */
+  font-size: 18px;
 }
 
-.add-blog-button {
-  background-color: var(--secondary-color); /* Use the same color pattern */
+/* Styling for buttons */
+.button {
+  background-color: var(--secondary-color);
   color: #fff;
-  padding: 10px 20px; /* Adjust padding for the button */
-  font-size: 18px; /* Increase the font size */
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  margin: 20px auto; /* Center the button horizontally within the container */
+  margin: 20px auto;
   display: block;
+  text-align: center;
+  width: 150px;
 }
 
 .container {
@@ -63,20 +74,26 @@ nav a {
 }
 
 main {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   /* padding: 20px; */
+  margin: 0 auto;
 }
 
 .post {
   margin-bottom: 20px;
-  border: 1px solid #ddd; /* Add a border to the post */
-  padding: 10px; /* Add padding to the post */
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
 }
 
 .post-header {
-  background-color: var(--secondary-color); /* Match the header color */
+  background-color: var(--secondary-color);
   color: #fff;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .post h2 {
@@ -85,7 +102,7 @@ main {
 }
 
 .post-content {
-  padding: 10px; /* Add padding to the content section */
+  padding: 10px;
 }
 
 .post .author,
@@ -101,30 +118,24 @@ main {
   display: block;
   text-align: right;
   text-decoration: none;
-  color: #007bff;
+  color: var(--link-color);
 }
 
 footer {
   text-align: center;
   padding: 10px;
-  background-color: var(--secondary-color);
+  background-color: var(--main-color);
   color: #fff;
-  margin-top: auto;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .col-md-6 {
-  width: 50%;
+  width: 100%;
   padding: 20px;
-}
-
-h2 {
-  font-size: 24px;
-  color: var(--main-color);
-  margin-bottom: 20px;
 }
 
 .form {
@@ -148,14 +159,154 @@ label {
   border: 1px solid #ddd;
 }
 
+/* Styling for common buttons */
 button.btn {
   background-color: var(--secondary-color);
   color: #fff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
 }
 
-button.btn-primary {
-  background-color: var(--lighter-purple);
+/* Styling for common buttons */
+.button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Styling for the Add Comment button */
+#add-comment-button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Styling for the Logout button */
+#logout {
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Styling for the Add Blog button */
+.add-blog-button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Styling for the Delete button */
+#delete-post-button {
+  background-color: #f44336; /* Red */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Styling for common buttons on hover */
+.button:hover,
+#add-comment-button:hover,
+.add-blog-button:hover,
+#delete-post-button:hover {
+  background-color: var(--text-color); /* Darker shade of the main color */
+}
+
+#logout:hover {
+  background-color: red;
+}
+
+/* Styling for common buttons on focus */
+.button:focus,
+#add-comment-button:focus,
+.add-blog-button:focus,
+#delete-post-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--text-color);
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  nav li {
+    margin-right: 10px;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+
+  .button {
+    font-size: 16px;
+  }
+
+  .form {
+    padding: 10px;
+  }
+
+  .form-input {
+    padding: 8px;
+  }
+}
+
+/* Additional styling for the edit-post form */
+.edit-post-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.edit-post-form {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  max-width: 600px;
+  width: 100%;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#submit-edit-button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
