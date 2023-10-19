@@ -22,6 +22,7 @@ header {
   color: #fff;
   padding: 20px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 header h1 {
@@ -81,8 +82,9 @@ main {
 }
 
 .post {
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
+  margin: 30px;
+  border: 10px solid #ddd;
+  border-radius: 20px;
   padding: 10px;
   background-color: #fff;
 }
@@ -94,11 +96,12 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
 }
 
 .post h2 {
   font-size: 24px;
-  margin: 0;
+  /* margin: 0; */
 }
 
 .post-content {
@@ -118,7 +121,9 @@ main {
   display: block;
   text-align: right;
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 15px;
 }
 
 footer {
@@ -141,7 +146,8 @@ footer {
 .form {
   background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 10px solid #ddd;
+  border-radius: 20px;
 }
 
 .form-group {
@@ -166,8 +172,12 @@ button.btn {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  /* width: 50%; */
   margin-top: 20px;
+  border: 3px solid var(--main-color);
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 /* Styling for common buttons */
@@ -194,6 +204,10 @@ button.btn {
   text-align: center;
   display: block;
   margin: 20px auto;
+  border: 3px solid var(--main-color);
+  border-radius: 21px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 /* Styling for the Logout button */
@@ -205,6 +219,8 @@ button.btn {
   border: none;
   cursor: pointer;
   text-align: center;
+  border: 3px solid var(--background-color);
+  border-radius: 20px;
 }
 
 /* Styling for the Add Blog button */
@@ -219,6 +235,8 @@ button.btn {
   text-align: center;
   display: block;
   margin: 20px auto;
+  border: 3px solid var(--main-color);
+  border-radius: 25px;
 }
 
 /* Styling for the Delete button */
@@ -229,10 +247,14 @@ button.btn {
   border: none;
   cursor: pointer;
   text-align: center;
+  border: 3px solid var(--background-color);
+  border-radius: 20px;
 }
 
 /* Styling for common buttons on hover */
 .button:hover,
+button.btn:hover,
+#submit-edit-button:hover,
 #add-comment-button:hover,
 .add-blog-button:hover,
 #delete-post-button:hover {
@@ -291,15 +313,17 @@ button.btn {
 .edit-post-form {
   background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
-  max-width: 600px;
+  max-width: 700px;
   width: 100%;
+  border: 10px solid #ddd;
+  border-radius: 20px;
 }
 
 .form-textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
+  resize: none;
 }
 
 #submit-edit-button {
@@ -309,4 +333,8 @@ button.btn {
   border: none;
   cursor: pointer;
   width: 100%;
+  border: 3px solid var(--main-color);
+  border-radius: 21px;
+  font-weight: bold;
+  font-size: 15px;
 }
