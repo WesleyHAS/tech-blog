@@ -61,21 +61,47 @@ router.post("/create-newpost", withAuth, async (req, res) => {
   }
 });
 
-// Update a post by its `id` value
-router.put("/:id", withAuth, async (req, res) => {
+// Get the page to update the posts
+router.get("/edit-post/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Blogpost.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
+    // Retrieve the blog post with the given ID from your database
+    const post = await Blogpost.findByPk(req.params.id);
+
+    if (!post) {
+      res.status(404).json({ message: "No post with this ID!" });
+      return;
+    }
+
+    const postData = post.get({ plain: true });
+
+    // Render the edit-post.handlebars page and pass the post data to it
+    res.render("edit-post", {
+      logged_in: true,
+      postData,
     });
+    // console.log(postData.id);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Updates the posts
+router.put("/edit/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Blogpost.findByPk(req.params.id);
 
     if (!postData) {
       res.status(404).json({ message: "No post with this id!" });
       return;
     }
 
-    res.status(200).json(postData);
+    // Update the content of the post
+    postData.content = req.body.content;
+    await postData.save(); // Save the changes
+
+    res.redirect(`/${postData.id}`);
+    // console.log(postData.id);
+    // res.status(200).json({ message: "Post updated successfully" });
   } catch (err) {
     res.status(500).json(err);
   }
